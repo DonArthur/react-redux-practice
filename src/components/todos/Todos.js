@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux'
-import '../styles/todos.css'
-import { removeTodo } from '../containers/todo/todoSlice'
+import { removeTodo } from '../../containers/todo/todoSlice'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 
@@ -13,19 +12,19 @@ const Todos = () => {
     }, [todos])
 
   return (
-    <div className='todo-container'>
+    <div className='bg-teal-600 p-4 pb-8 rounded-lg'>
         {todos.length === 0 ? (
-            <div>Add some task</div>
+            <div>Add some task...</div>
         ) : (
             todos.map((item) => {
                 return (
-                    <div className='todo' key={item.id}>
-                        <div className="text">{item.text}</div>
+                    <div className='flex justify-center items-center mt-4 gap-4' key={item.id}>
+                        <div className="w-60">{item.text}</div>
                         <div 
-                            className='status btn' 
+                            className='bg-green-800 py-2 px-3 rounded cursor-pointer hover:bg-green-700' 
                             onClick={() => dispatch(removeTodo(item.id))}
                         >
-                            Click to complete
+                            Remove task
                         </div>
                     </div>
                 )
